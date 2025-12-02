@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CodePad – Online Compiler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- CodeMirror (syntax highlighting) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-palenight.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>CodePad</h1>
+        <p>Minimal online compiler · Powered by Piston API</p>
+      </div>
+      <div class="topbar-right">
+        <label class="lang-select-wrap">
+          <span>Language</span>
+          <select id="language-select">
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript (Node)</option>
+            <option value="java">Java</option>
+          </select>
+        </label>
+
+        <button id="load-example" class="btn ghost">Example</button>
+        <button id="clear-editor" class="btn ghost">Clear</button>
+        <button id="run-btn" class="btn primary">Run ▷</button>
+      </div>
+    </header>
+
+    <!-- Main work area -->
+    <main class="main">
+      <!-- Editor side -->
+      <section class="pane editor-pane">
+        <div class="pane-header">
+          <span class="pane-title" id="file-label">main.c</span>
+          <span class="hint">Tip: Ctrl + Enter to run</span>
+        </div>
+
+        <!-- Code editor -->
+        <div class="editor-wrapper">
+          <textarea id="code-editor"></textarea>
+        </div>
+
+        <!-- Stdin -->
+        <div class="stdin-section">
+          <div class="stdin-header">
+            <span>Input (stdin)</span>
+          </div>
+          <textarea
+            id="stdin"
+            placeholder="Optional input for your program..."
+          ></textarea>
+        </div>
+      </section>
+
+      <!-- Output side -->
+      <section class="pane output-pane">
+        <div class="pane-header">
+          <span class="pane-title">Output</span>
+          <div class="output-controls">
+            <button id="clear-output" class="btn tiny">Clear</button>
+          </div>
+        </div>
+
+        <pre id="stdout" class="console"></pre>
+
+        <div class="pane-header">
+          <span class="pane-title">Errors</span>
+        </div>
+        <pre id="stderr" class="console console-error"></pre>
+
+        <!-- Status bar -->
+        <div class="status-bar" id="status-bar">
+          <span id="status-icon" class="status-icon">●</span>
+          <span id="status-text" class="status-text">Idle</span>
+          <span id="exec-time" class="status-time"></span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Built for your college · No login, just code 🧠</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

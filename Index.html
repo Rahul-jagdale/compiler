@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CodePad – Online Compiler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="compiler.css" />
+
+  <!-- CodeMirror (syntax highlighting) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-palenight.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Left sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-dot"></span>
+      </div>
+      <button class="sidebar-btn active" title="Compiler">
+        <span>▶</span>
+      </button>
+      <button class="sidebar-btn" title="Settings">
+        <span>⚙</span>
+      </button>
+      <button class="sidebar-btn" title="Info">
+        <span>ⓘ</span>
+      </button>
+    </aside>
+
+    <!-- Main area -->
+    <div class="app-main">
+      <!-- Top bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1>CodePad</h1>
+          <p>Lightweight online compiler powered by Piston API.</p>
+        </div>
+        <div class="topbar-right">
+          <label class="lang-wrap">
+            <span>Language</span>
+            <select id="language-select">
+              <option value="c">C</option>
+              <option value="cpp">C++</option>
+              <option value="python">Python</option>
+              <option value="javascript">JavaScript (Node)</option>
+              <option value="java">Java</option>
+            </select>
+          </label>
+
+          <button id="load-example" class="btn ghost">Example</button>
+          <button id="clear-editor" class="btn ghost">Clear</button>
+          <button id="run-btn" class="btn primary">Run ▷</button>
+        </div>
+      </header>
+
+      <!-- Work area: editor + output -->
+      <main class="workarea">
+        <!-- Editor panel -->
+        <section class="panel editor-panel">
+          <div class="panel-header">
+            <span class="panel-title">main file</span>
+          </div>
+          <!-- CodeMirror will replace this textarea -->
+          <textarea id="code-editor"></textarea>
+          <div class="stdin-block">
+            <div class="stdin-header">
+              <span>Input (stdin)</span>
+            </div>
+            <textarea
+              id="stdin"
+              placeholder="Optional input for your program..."
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Output panel -->
+        <section class="panel output-panel">
+          <div class="panel-header output-header">
+            <span class="panel-title">Output</span>
+            <div class="output-meta">
+              <span id="exec-time" class="pill pill-muted"></span>
+              <span id="status-text" class="status-text"></span>
+              <button id="clear-output" class="btn tiny">Clear</button>
+            </div>
+          </div>
+          <pre id="stdout" class="output-box"></pre>
+
+          <div class="panel-header">
+            <span class="panel-title">Errors</span>
+          </div>
+          <pre id="stderr" class="output-box error-box"></pre>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Made for your college by you 💻 | Backend: Piston public API</span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

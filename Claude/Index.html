@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeX - Online Compiler</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Monaco Editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/editor/editor.main.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h1>CodeX</h1>
+            </div>
+            <div class="tagline">Compile. Run. Conquer.</div>
+        </header>
+
+        <div class="editor-container">
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <select id="languageSelect" class="language-select">
+                        <option value="python">🐍 Python</option>
+                        <option value="javascript">📜 JavaScript</option>
+                        <option value="java">☕ Java</option>
+                        <option value="cpp">⚙️ C++</option>
+                        <option value="c">🔧 C</option>
+                        <option value="go">🐹 Go</option>
+                        <option value="rust">🦀 Rust</option>
+                        <option value="php">🐘 PHP</option>
+                        <option value="ruby">💎 Ruby</option>
+                    </select>
+                    <button id="runBtn" class="run-btn">
+                        <span class="btn-icon">▶️</span>
+                        Run Code
+                    </button>
+                    <button id="clearBtn" class="clear-btn">
+                        <span class="btn-icon">🗑️</span>
+                        Clear
+                    </button>
+                </div>
+                <div class="toolbar-right">
+                    <div id="statusIndicator" class="status-indicator">Ready</div>
+                </div>
+            </div>
+
+            <div class="code-section">
+                <div class="editor-wrapper">
+                    <div class="section-header">
+                        <span class="section-icon">📝</span>
+                        Code Editor
+                    </div>
+                    <div id="monacoEditor" class="monaco-editor-container"></div>
+                </div>
+
+                <div class="output-wrapper">
+                    <div class="section-header">
+                        <span class="section-icon">📊</span>
+                        Output
+                        <button id="copyOutput" class="copy-btn" title="Copy output">📋</button>
+                    </div>
+                    <div id="output" class="output-area">
+                        <div class="output-placeholder">
+                            <span class="placeholder-icon">🚀</span>
+                            <p>Run your code to see the output here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Powered by Piston API | Made with ❤️</p>
+        </footer>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Compiling & Running...</p>
+    </div>
+
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
